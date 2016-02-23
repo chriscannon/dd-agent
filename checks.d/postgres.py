@@ -295,7 +295,7 @@ SELECT s.schemaname,
     def _get_version(self, key, db):
         if key not in self.versions:
             cursor = db.cursor()
-            cursor.execute('SHOW SERVER_VERSION;')
+            cursor.execute('SELECT VERSION();')
             result = cursor.fetchone()
             try:
                 version = map(int, result[0].split('.'))
